@@ -131,24 +131,29 @@ public class ServicioEtiquetas {
          fecha_modificacion
          */
 //        System.out.println("QueryParam: "+usuarioID);
-//
 //        System.out.println(etiqueta.getValorTag());
 //        System.out.println(etiqueta.getNombre());
 //        System.out.println(etiqueta.getLatitud());
 //        System.out.println(etiqueta.getLongitud());
+        try {
 
-        Etiquetas eti = new Etiquetas();
-        eti.setValorTag(etiqueta.getValorTag());
-        eti.setNombre(etiqueta.getNombre());
-        eti.setLatitud(etiqueta.getLatitud());//getLat());
-        eti.setLongitud(etiqueta.getLongitud());
-        eti.setFechaCreacion(new Date());
-        eti.setFechaModificacion(new Date());
-        Usuarios usuarioid = du.getUsuarioid(Integer.parseInt(usuarioID));
-        eti.setFkIdUsuarioCreo(usuarioid);//setUsuariosByFkIdUsuarioCreo(usuarioid);
-        eti.setFkIdUsuarioModifico(usuarioid);//setUsuariosByFkIdUsuarioModifico(usuarioid);
-        de.addEtiqueta(eti, usuarioid);
-        return Response.ok(eti).build();
+            Etiquetas eti = new Etiquetas();
+            eti.setValorTag(etiqueta.getValorTag());
+            eti.setNombre(etiqueta.getNombre());
+            eti.setLatitud(etiqueta.getLatitud());//getLat());
+            eti.setLongitud(etiqueta.getLongitud());
+            eti.setFechaCreacion(new Date());
+            eti.setFechaModificacion(new Date());
+            Usuarios usuarioid = du.getUsuarioid(Integer.parseInt(usuarioID));
+            eti.setFkIdUsuarioCreo(usuarioid);//setUsuariosByFkIdUsuarioCreo(usuarioid);
+            eti.setFkIdUsuarioModifico(usuarioid);//setUsuariosByFkIdUsuarioModifico(usuarioid);
+            de.addEtiqueta(eti, usuarioid);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return Response.ok(1).build();
+
     }
 
 ////////////////////////////////////////////////////////////////////
