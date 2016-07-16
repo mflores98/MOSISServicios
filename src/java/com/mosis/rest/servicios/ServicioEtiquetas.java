@@ -130,11 +130,15 @@ public class ServicioEtiquetas {
          fecha_creacion
          fecha_modificacion
          */
-//        System.out.println("QueryParam: "+usuarioID);
-//        System.out.println(etiqueta.getValorTag());
-//        System.out.println(etiqueta.getNombre());
-//        System.out.println(etiqueta.getLatitud());
-//        System.out.println(etiqueta.getLongitud());
+        /*
+            {  
+             "valorTag":"valorTag ExPost2",
+             "nombre": "nombretag ExPost2",
+             "latitud":"latitudtag ExPost2",
+             "longitud":"longitud ExPost2"
+         }
+         
+        */
         try {
 
             Etiquetas eti = new Etiquetas();
