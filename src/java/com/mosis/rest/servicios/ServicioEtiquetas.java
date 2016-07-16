@@ -118,6 +118,7 @@ public class ServicioEtiquetas {
 //        return Response.ok(eti).build();
 //   }
     ///http://localhost:8084/MOSISServicios/webresources/servicio_etiqueta/etiqueta?usuarioID=1
+    //?usuarioID={id de usuario que registrara la etiqueta}
     @POST
     @Path("/etiqueta")
     public Response aadEtiqueta(@QueryParam("usuarioID") String usuarioID, Etiquetas etiqueta) {
