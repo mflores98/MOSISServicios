@@ -157,7 +157,7 @@ public class ServicioEtiquetas {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return Response.ok(1).build();
+        return Response.ok().build();
 
     }
 

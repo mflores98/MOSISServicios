@@ -7,6 +7,7 @@ package org.netbeans.rest.application.config;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
+
 /**
  *
  * @author emmanuelle
@@ -19,7 +20,7 @@ public class ApplicationConfig extends Application {
         Set<Class<?>> resources = new java.util.HashSet<>();
         // following code can be used to customize Jersey 1.x JSON provider:
         try {
-            
+
             Class jacksonProvider = Class.forName("com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider");
             resources.add(jacksonProvider);
         } catch (ClassNotFoundException ex) {
@@ -35,9 +36,10 @@ public class ApplicationConfig extends Application {
      * out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-           resources.add(com.mosis.rest.servicios.ServicioEtiquetas.class);
+        resources.add(com.mosis.rest.servicios.ServicioDispositivo.class);
+        resources.add(com.mosis.rest.servicios.ServicioEtiquetas.class);
+        resources.add(com.mosis.rest.servicios.ServicioTipoUsuario.class);
+        resources.add(com.mosis.rest.servicios.ServicioUsuarios.class);
     }
-    
 
 }
-        
