@@ -64,7 +64,7 @@ public class ServicioDispositivo {
 
 ///////////////////////////////////////////////////////////////////////////////////
     /**
-     * http://localhost:8084/MOSISServicios/webresources/servicio_dispositivo/1
+     * http://localhost:8084/MOSISServicios/webresources/servicio_dispositivo/5
      *
      * @param id
      * @return
