@@ -10,9 +10,11 @@ import com.mosis.entidades.Usuarios;
 import com.mosis.negocios.delegate.DelegateTipoRespuesta;
 import com.mosis.negocios.delegate.DelegateUsuarios;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -72,6 +74,13 @@ public class ServicioTipoRespuesta {
             System.out.println("tiporespuesta no valido");
         }
         return null;
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public Response deleteTipoRespuesta(@PathParam("id") int id) {
+        dtr.deleteTipoRespuesta(id);
+        return Response.ok().build();
     }
 
 }
