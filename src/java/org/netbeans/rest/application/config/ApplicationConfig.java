@@ -38,6 +38,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.mosis.rest.servicios.ServicioDispositivo.class);
         resources.add(com.mosis.rest.servicios.ServicioEtiquetas.class);
+        resources.add(com.mosis.rest.servicios.ServicioGuardia.class);
         resources.add(com.mosis.rest.servicios.ServicioPregunta.class);
         resources.add(com.mosis.rest.servicios.ServicioTipoRespuesta.class);
         resources.add(com.mosis.rest.servicios.ServicioTipoUsuario.class);
