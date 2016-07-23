@@ -179,12 +179,12 @@ public class ServicioGuardia {
     @Path("/guardia/{numero}")
     public StreamingOutput guardiaNum(@PathParam("numero") String numero) {
         List<Object[]> dato = ServiceFacadeLocator.getFacadeGuardia().getGuardiaNumEmp(numero);
-
+        Guardias guardias = ServiceFacadeLocator.getFacadeGuardia().getGuardiaId(2);
         ResponseT r = new ResponseT();
 
         if (dato != null) {
             Gson gson = new Gson();
-            String json = gson.toJson(dato);
+            String json = gson.toJson(guardias);
             r.setCode(200);
             r.setMessage("Correcto");
             r.setResults(json);
