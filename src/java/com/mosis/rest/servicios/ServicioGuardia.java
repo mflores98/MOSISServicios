@@ -125,7 +125,6 @@ public class ServicioGuardia {
 //         StreamingOutput s= sg.getGuardias();
 //        System.out.println(s);
 //    }
-
     @DELETE
     @Path("/{id}")
     public Response deleteGuardia(@PathParam("id") int id) {
@@ -136,5 +135,87 @@ public class ServicioGuardia {
 //        ServicioGuardia sg=new ServicioGuardia();
 //        sg.deleteGuardia(5);
 //    }
+/*
+     OK(200, "OK")CREATED(201, "Created"),
+     ACCEPTED(202, "Accepted")
+     FOUND(302, "Found")
+     NOT_MODIFIED(304, "Not Modified")
+     BAD_REQUEST(400, "Bad Request")
+     UNAUTHORIZED(401, "Unauthorized")
+     FORBIDDEN(403, "Forbidden")
+     NOT_FOUND(404, "Not Found")
+     REQUEST_TIMEOUT(408, "Request Timeout"),
+     EXPECTATION_FAILED(417, "Expectation Failed")
+     INTERNAL_SERVER_ERROR(500, "Internal Server Error")
+     NOT_IMPLEMENTED(501, "Not Implemented")
 
+     */
+
+    @GET
+    @Path("/log/{numero}")
+    public ResponseT getGuardiaNum(@PathParam("numero") String numero) {
+        ResponseT r = new ResponseT();
+
+        List<Object[]> dato = ServiceFacadeLocator.getFacadeGuardia().getGuardiaNumEmp(numero);
+
+        if (dato != null) {
+            Gson gson = new Gson();
+            String json = gson.toJson(dato);
+            r.setCode(200);
+            r.setMessage("Correcto");
+            r.setResults(getGuardiaNum(numero));
+            //return r;
+        } else {
+            r.setCode(401);
+            r.setMessage("Unauthorized");
+            r.setResults("");
+            // return r;
+        }
+        return r;
+
+    }
+
+    @GET
+    @Path("/guardia/{numero}")
+    public StreamingOutput guardiaNum(@PathParam("numero") String numero) {
+        List<Object[]> dato = ServiceFacadeLocator.getFacadeGuardia().getGuardiaNumEmp(numero);
+
+        ResponseT r = new ResponseT();
+
+        if (dato != null) {
+            Gson gson = new Gson();
+            String json = gson.toJson(dato);
+            r.setCode(200);
+            r.setMessage("Correcto");
+            r.setResults(json);
+            //return r;
+        } else {
+            r.setCode(401);
+            r.setMessage("Unauthorized");
+            r.setResults("");
+            //return r;
+
+        }
+
+        return new StreamingOutput() {
+            @Override
+            public void write(OutputStream out) throws IOException, WebApplicationException {
+                salidaGuardiaNum(out, r);
+            }
+        };
+    }
+
+    protected void salidaGuardiaNum(OutputStream os, ResponseT dato) throws IOException {
+        PrintStream printStream = new PrintStream(os);
+        Gson gson = new Gson();
+        String string = gson.toJson(dato);
+        printStream.println(string);
+        os.flush();
+    }
+
+//    public static void main(String[] args) {
+//        ServicioGuardia sg = new ServicioGuardia();
+//        String dato = sg.getGuardiaNum("009");
+//        System.out.println(dato);
+//    }
 }
